@@ -152,7 +152,7 @@ so go for the high score!\n''')
                 self.__captain.set_y(new_y)
             elif isinstance(self.__field[new_x][new_y], Veggie):
                 veggie = self.__field[new_x][new_y]
-                print(self.__veggies)
+                # print(self.__veggies)
                 self.__veggies.remove(veggie)
                 self.__captain.addVeggie(veggie)
                 self.__score += veggie.getpoints()
