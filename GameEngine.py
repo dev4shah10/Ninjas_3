@@ -153,7 +153,7 @@ so go for the high score!\n''')
             elif isinstance(self.__field[new_x][new_y], Veggie):
                 veggie = self.__field[new_x][new_y]
                 # print(self.__veggies)
-                self.__veggies.remove(veggie)
+                # self.__veggies.remove(veggie)
                 self.__captain.addVeggie(veggie)
                 self.__score += veggie.getpoints()
                 print(f"Delicious {veggie.getname()} found! Score +{veggie.getpoints()}")
@@ -169,7 +169,7 @@ so go for the high score!\n''')
         print("Game Over!")
         print("Vegetables harvested by Captain Veggie:")
         for veggie in self.__captain.getcollectedVeggie():
-            print(f"{veggie.get_name()} ({veggie.get_symbol()}) - {veggie.get_points()} points")
+            print(f"{veggie.getname()} ({veggie.get_symbol()}) - {veggie.get_points()} points")
         print(f"Your score: {self.__score}")
 
     def highScore(self):
