@@ -22,8 +22,7 @@ def main():
     # While there are still vegetables left in the game
     while remaining_vegetables > 0:
         # Output the number of remaining vegetables and the player’s score
-        print(f"Remaining vegetables: {remaining_vegetables}")
-        print(f"Player's score: {game_engine.getScore()}")
+        print(f"{remaining_vegetables} veggies remaining. Current score: {game_engine.getScore()}\n")
 
         # Print out the field
         game_engine.printField()

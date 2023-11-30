@@ -12,7 +12,7 @@ class Veggie(FieldInhabitant):
         self._vegPoints=vegPoints
 
     def __str__(self):
-        return f"The vegetable is\n{self._symbolOfInhabitant}: {self._name} - {self._vegPoints}"
+        return f"{self._symbolOfInhabitant}: {self._name} {self._vegPoints} Points"
 
     def getname(self):
         return self._name

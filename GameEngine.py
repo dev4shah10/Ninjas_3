@@ -30,7 +30,9 @@ class GameEngine:
             veggie_file = input("Enter the name of the veggie file: ")
 
         with open(veggie_file, 'r') as file:
-            field_size = tuple(map(int, file.readline().strip().split()))
+
+            field_info = file.readline().strip().split(',')
+            field_size = tuple(map(int, field_info[1:]))
             self.__field = [[None for _ in range(field_size[1])] for _ in range(field_size[0])]
 
             for line in file:
@@ -42,7 +44,8 @@ class GameEngine:
                 while True:
                     x, y = random.randint(0, field_size[0] - 1), random.randint(0, field_size[1] - 1)
                     if self.__field[x][y] is None:
-                        self.__field[x][y] = self.__veggies[_]
+                        random_veggie = random.choice(self.__veggies)
+                        self.__field[x][y] = random_veggie
                         break
 
     def initCaptain(self):
@@ -77,21 +80,33 @@ class GameEngine:
         return count
 
     def intro(self):
-        print("Welcome to Captain Veggie!")
-        print("In this game, you need to harvest as many vegetables as possible before they are consumed by rabbits.")
-        print("Move Captain Veggie using W, A, S, D and collect vegetables to score points.")
-        print("Be careful not to step on rabbits!")
-        print("List of possible vegetables:")
+        print('''\nWelcome to Captain Veggie!
+The rabbits have invaded your garden and you must harvest
+as many vegetables as possible before the rabbits eat them
+all! Each vegetable is worth a different number of points
+so go for the high score!\n''')
+        # print("Move Captain Veggie using W, A, S, D and collect vegetables to score points.")
+        # print("Be careful not to step on rabbits!")
+        print("The vegetables are:\n")
         for veggie in self.__veggies:
-            print(veggie)
-        print(f"Captain Veggie symbol: {self.__captain.get_symbol()}")
-        print(f"Rabbit symbol: {self.__rabbits[0].get_symbol()}")
+            print((veggie))
+        print(f"\nCaptain Veggie is {self.__captain.get_symbol()}, and rabbits are {self.__rabbits[0].get_symbol()}'s.\n")
 
+    
     def printField(self):
         print("Field:")
+        print("+" + "-" * 21 + "+")
         for row in self.__field:
-            print(" | ".join(str(item) if item is not None else ' ' for item in row))
-            print("-" * 30)
+            print("|", end=' ')
+            for item in row:
+                if item is not None:
+                    print(item.get_symbol(), end=' ')
+                else:
+                    print(' ', end=' ')
+            print("|")
+        print("+" + "-" * 21 + "+")
+
+
 
     def getScore(self):
         return self.__score
@@ -137,10 +152,11 @@ class GameEngine:
                 self.__captain.set_y(new_y)
             elif isinstance(self.__field[new_x][new_y], Veggie):
                 veggie = self.__field[new_x][new_y]
+                print(self.__veggies)
                 self.__veggies.remove(veggie)
-                self.__captain.add_veggie(veggie)
-                self.__score += veggie.get_points()
-                print(f"Delicious {veggie.get_name()} found! Score +{veggie.get_points()}")
+                self.__captain.addVeggie(veggie)
+                self.__score += veggie.getpoints()
+                print(f"Delicious {veggie.getname()} found! Score +{veggie.getpoints()}")
                 self.__field[self.__captain.get_x()][self.__captain.get_y()], self.__field[new_x][new_y] = None, self.__captain
                 self.__captain.set_x(new_x)
                 self.__captain.set_y(new_y)
@@ -152,7 +168,7 @@ class GameEngine:
     def gameOver(self):
         print("Game Over!")
         print("Vegetables harvested by Captain Veggie:")
-        for veggie in self.__captain.get_veggies_collected():
+        for veggie in self.__captain.getcollectedVeggie():
             print(f"{veggie.get_name()} ({veggie.get_symbol()}) - {veggie.get_points()} points")
         print(f"Your score: {self.__score}")
 
