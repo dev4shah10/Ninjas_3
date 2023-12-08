@@ -121,9 +121,16 @@ class GameEngine:
         for veggie in self.vegetables:
             print(f"Symbol: {veggie.get_symbol()}, Name: {veggie._name}, Points: {veggie.getpoints()}")
     
-    def printField(self): #author: daksh
+    def printField(self): #author: Daksh
+        # Calculate the width of the field dynamically
+        field_width = len(self.field[0]) if self.field and len(self.field) > 0 else 0
+
+        # Construct the boundary string
+        boundary = "+" + "-" * (2 * field_width + 1) + "+"
+
+        # Print the field
         print("Field:")
-        print("+" + "-" * 21 + "+")
+        print(boundary)
         for row in self.field:
             print("|", end=' ')
             for item in row:
@@ -132,7 +139,7 @@ class GameEngine:
                 else:
                     print(' ', end=' ')
             print("|")
-        print("+" + "-" * 21 + "+")
+        print(boundary)
 
     def getScore(self): #author: daksh
         return self.score
