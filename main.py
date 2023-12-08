@@ -33,6 +33,9 @@ def main():
         # Move the captain
         game_engine.moveCaptain()
 
+        # Move snake
+        game_engine.moveSnake()
+
         # Determine the new number of remaining vegetables
         remaining_vegetables = game_engine.remainingVeggies()
 
@@ -40,7 +43,7 @@ def main():
     game_engine.gameOver()
 
     # Handle the High Score functionality
-    game_engine.highScore()
+    game_engine.highscore()
 
 if __name__ == "__main__":
     main()
