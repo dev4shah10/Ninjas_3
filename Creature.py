@@ -1,4 +1,4 @@
-# Author: Shucheera
+# Assuming FieldInhabitant class is defined in FieldInhabitant.py
 from FieldInhabitant import FieldInhabitant
 
 class Creature(FieldInhabitant):

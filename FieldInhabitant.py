@@ -1,4 +1,3 @@
-# Author: Shucheera
 class FieldInhabitant:
     def __init__(self, symbol):
         self._symbolOfInhabitant = symbol  # Using an underscore to indicate it's a "protected" variable

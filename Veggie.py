@@ -19,9 +19,7 @@ class Veggie(FieldInhabitant):
 
     def getpoints(self):
         return self._vegPoints
-        
     def setname(self,NewName):
         self._name=NewName
-        
     def setpoints(self,NewPoints):
         self._vegPoints=NewPoints
