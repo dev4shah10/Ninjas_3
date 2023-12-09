@@ -1,4 +1,4 @@
-# Assuming FieldInhabitant class is defined in FieldInhabitant.py
+# Author: Shucheera
 from FieldInhabitant import FieldInhabitant
 
 class Creature(FieldInhabitant):

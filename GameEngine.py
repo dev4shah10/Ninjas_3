@@ -121,7 +121,7 @@ class GameEngine:
         for veggie in self.vegetables:
             print(f"Symbol: {veggie.get_symbol()}, Name: {veggie._name}, Points: {veggie.getpoints()}")
     
-    def printField(self): #author: Daksh
+    def printField(self): #author: daksh
         # Calculate the width of the field dynamically
         field_width = len(self.field[0]) if self.field and len(self.field) > 0 else 0
 
@@ -175,7 +175,7 @@ class GameEngine:
                 rabbit.set_x(new_x)
                 rabbit.set_y(new_y)
     
-    def moveCptVertical(self,vertimovement): #author: daksh
+    def moveCptVertical(self, vertimovement): #author: daksh
 
         # next 2 variables store the position of the captain before it is changed in order to set it to None later
         new_x=self.captain.get_x() + vertimovement
@@ -234,39 +234,7 @@ class GameEngine:
         else:
             print("Invalid input. Please enter W, A, S, or D.")
     
-    # def moveSnake(self): #author: daksh
-    #     if self.__snake is not None and self.captain is not None:
-    #         snake_x, snake_y = self.__snake.get_x(), self.__snake.get_y()
-    #         captain_x, captain_y = self.captain.get_x(), self.captain.get_y()
-
-    #         diff_x = abs(snake_x - captain_x)
-    #         diff_y = abs(snake_y - captain_y)
-
-    #         if diff_x > diff_y:
-    #             # Move in x direction
-    #             move_x = 1 if captain_x > snake_x else -1
-    #             new_x = snake_x + move_x
-    #             new_y = snake_y
-    #         else:
-    #             # Move in y direction
-    #             move_y = 1 if captain_y > snake_y else -1
-    #             new_y = snake_y + move_y
-    #             new_x = snake_x
-
-    #         if 0 <= new_x < len(self.field) and 0 <= new_y < len(self.field[0]) and self.field[new_x][new_y] is None:
-    #             self.field[snake_x][snake_y] = None
-    #             self.field[new_x][new_y] = self.__snake
-    #             self.__snake.set_x(new_x)
-    #             self.__snake.set_y(new_y)
-    #         elif new_x == captain_x and new_y == captain_y:
-    #             # Snake catches the captain, reset snake and remove veggies from captain
-    #             print("Stepped on a snake, droping last 5 veggies")
-    #             self.field[snake_x][snake_y] = None
-    #             print("Veggies dropped: " + ', '.join(str(v) for v in self.captain._collectedVeggie[-5:]))
-    #             self.captain._collectedVeggie = self.captain._collectedVeggie[:-5]
-    #             self.initSnake()
-
-    def moveSnake(self): #author: Daksh
+    def moveSnake(self): #author: daksh
         if self.__snake is not None and self.captain is not None:
             snake_x, snake_y = self.__snake.get_x(), self.__snake.get_y()
             captain_x, captain_y = self.captain.get_x(), self.captain.get_y()
