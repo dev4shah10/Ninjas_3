@@ -16,3 +16,4 @@ class Captain(Creature):
 
     def getcollectedVeggie(self):
         return self._collectedVeggie
+
